@@ -27,11 +27,14 @@ cp backend/.env.example backend/.env
 
 Edit `backend/.env`:
 ```env
-ANTHROPIC_API_KEY=sk-ant-...   # console.anthropic.com (free $5 credits)
-GROQ_API_KEY=gsk_...           # console.groq.com (free)
-GEMINI_API_KEY=AIza...         # aistudio.google.com (free)
+
+GROQ_API_KEY="gsk_......"
+GEMINI_API_KEY="AIza...."
+CF_ACCOUNT_ID="xxxxxx"
+CF_API_TOKEN="cfat_....."
+HF_API_TOKEN="hf_....."        
 PORT=5000
-FRONTEND_URL=http://localhost:5173
+FRONTEND_URL=*
 ```
 
 ### 3. Run locally
