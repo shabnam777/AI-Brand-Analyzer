@@ -7,39 +7,6 @@ Shoppers are asking GPT, Gemini, and Llama "what's the best [product]?" instead 
 🔗 **Live Demo:** [your-app.vercel.app](https://your-app.vercel.app)  
 📦 **GitHub:** [github.com/your-username/aeo-diagnostic](https://github.com/your-username/aeo-diagnostic)
 
----
-
-## 🎬 Video Script (3 min max)
-
-**[0:00 – 0:20] Intro**
-> "Hi, I'm [Your Name] from [School], CGPA [X.X]. My favorite accomplishment is [1 sentence]. Today I built AEO Diagnostic — a tool that answers: when a shopper asks an AI 'what's the best magnesium supplement for seniors,' does YOUR brand show up?"
-
-**[0:20 – 1:30] Demo**
-> - Go to the live app
-> - Type: "best magnesium supplement for seniors" + brand: "Nature Made"
-> - Watch loading screen (3 AI models being queried in real time)
-> - Show the report card: AEO Score, Grade, Per-model breakdown, Competitor chart, Recommendations
-> - "This is not hypothetical — these are live API calls to Claude Haiku, Gemini 1.5 Flash, and Llama 3.3 70B happening right now"
-
-**[1:30 – 2:00] Why I designed it this way**
-> "The USER is an Amazon seller or DTC brand manager. Their problem: they're spending on SEO and Amazon ads, but AI search is eating into discovery. AEO is the next SEO. I focused on giving them one number — the AEO score — plus specific, prioritized actions."
-
-**[2:00 – 2:30] How it works + APIs**
-> - Node.js backend makes 3 parallel API calls
-> - Parses ranked lists from each model's response
-> - Scores based on position (rank #1 = 85 pts) + mention frequency
-> - Groq's Llama generates the 4 recommendations with impact/effort rating
-> - **APIs used:** Anthropic (Claude Haiku), Google Gemini 1.5 Flash, Groq (Llama 3.3 70B)
-
-**[2:30 – 3:00] If I had more time**
-> - Track AEO score over time (weekly cron job + database)
-> - Add Perplexity + Claude to the model roster
-> - Scrape competitor Amazon listings to auto-suggest better keywords
-> - Email alerts when rank changes significantly
-> - White-label dashboard for Pixii.ai customers
-
----
-
 ## 🚀 Quick Start
 
 ### Prerequisites
