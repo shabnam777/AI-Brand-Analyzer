@@ -5,7 +5,7 @@
 Shoppers are asking GPT, Gemini, and Llama "what's the best [product]?" instead of Googling. This tool tells you exactly where your brand ranks in those answers — and how to climb.
 
 🔗 **Live Demo:** [your-app.vercel.app](https://your-app.vercel.app)  
-📦 **GitHub:** [github.com/your-username/aeo-diagnostic](https://github.com/your-username/aeo-diagnostic)
+📦 **GitHub:** [github.com/your-username/aeo-diagnostic](https://github.com/shabnam777/aeo-diagnostic)
 
 ## 🚀 Quick Start
 
@@ -15,7 +15,7 @@ Shoppers are asking GPT, Gemini, and Llama "what's the best [product]?" instead 
 
 ### 1. Clone & Install
 ```bash
-git clone https://github.com/your-username/aeo-diagnostic.git
+git clone https://github.com/shabnam777/aeo-diagnostic.git
 cd aeo-diagnostic
 npm run install:all
 ```
