@@ -23,11 +23,8 @@ class _AnalysisScreenState extends State<AnalysisScreen> with TickerProviderStat
 
   final _steps = [
     (Icons.memory_rounded, Color(0xFF059669), 'Querying DeepSeek R1 70B...', 1400),
-    (Icons.memory_outlined, Color(0xFFFF6B35), 'Querying Llama 3.3 70B...', 1100),
-    (Icons.auto_awesome, Color(0xFF4285F4), 'Querying Gemini 1.5 Flash...', 1000),
-    (Icons.storage_rounded, Color(0xFFEF4444), 'Querying DeepSeek Qwen 32B...', 1200),
-    (Icons.cloud_rounded, Color(0xFFF59E0B), 'Querying Cloudflare AI...', 1100),
-    (Icons.hub_rounded, Color(0xFF92400E), 'Querying HuggingFace Mistral...', 1300),
+    (Icons.memory_outlined, Color(0xFFFF6B35), 'Querying Llama 3.3 70B...', 1400),
+    (Icons.cloud_rounded, Color(0xFFF59E0B), 'Querying Cloudflare AI...', 1400),
     (Icons.manage_search_rounded, AppColors.indigo, 'Extracting brand mentions...', 700),
     (Icons.bar_chart_rounded, AppColors.violet, 'Calculating AEO scores...', 700),
     (Icons.lightbulb_rounded, AppColors.gold, 'Generating recommendations...', 900),
