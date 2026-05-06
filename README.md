@@ -42,8 +42,8 @@ FRONTEND_URL=*
 # Terminal 1 — Backend
 cd backend && npm run dev
 
-# Terminal 2 — Frontend
-cd frontend && npm run dev
+# Terminal 2 — Frontend (Flutter)
+cd flutter_frontend && flutter pub get && flutter run -d chrome
 ```
 
 App runs at: **http://localhost:5173**
