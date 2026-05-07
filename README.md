@@ -165,9 +165,6 @@ aeo-diagnostic/
 | Groq (Llama 3.3) | Unlimited (generous) | 30 req/min |
 | Google Gemini 1.5 Flash | 1M tokens/day | 15 req/min |
 |Cloudflare | Free  | Very cheap |
-
-Total cost to run this for the demo: **~$0.002 per analysis** (just the Anthropic portion)
-
 ---
 
 Built for the **Pixii.ai Founding Engineer** assessment · May 2025
