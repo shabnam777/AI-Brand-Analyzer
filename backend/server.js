@@ -183,7 +183,7 @@ app.post("/api/analyze", async (req, res) => {
   if (!query || !userBrand)
     return res.status(400).json({ error: "query and userBrand are required" });
 
-  // All 6 models in parallel
+  // All 3models in parallel
   const [r1,r4, r5] = await Promise.all([
     queryDeepSeek(query),
     queryLlama(query),
@@ -232,4 +232,4 @@ app.post("/api/analyze", async (req, res) => {
 });
 
 app.get("/health", (_, res) => res.json({ status:"ok", timestamp:new Date().toISOString() }));
-app.listen(PORT, () => console.log(`✅ AEO Diagnostic running on port ${PORT} — 6 AI models`));
+app.listen(PORT, () => console.log(`✅ AEO Diagnostic running on port ${PORT} — 3AI models`));
