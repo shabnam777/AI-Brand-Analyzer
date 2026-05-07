@@ -4,7 +4,7 @@
 
 Shoppers are asking GPT, Gemini, and Llama "what's the best [product]?" instead of Googling. This tool tells you exactly where your brand ranks in those answers — and how to climb.
 
-🔗 **Live Demo:** [your-app.vercel.app](https://your-app.vercel.app)  
+🔗 **Live Demo:** [[your-app.vercel.app](https://your-app.vercel.app)  ](https://ai-brand-analyzer-rose.vercel.app/)
 📦 **GitHub:** [github.com/shabnam777/aeo-diagnostic](https://github.com/shabnam777/aeo-diagnostic)
 
 ## 🚀 Quick Start
