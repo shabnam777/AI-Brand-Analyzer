@@ -21,6 +21,8 @@ app.use(express.json());
 // ─── Clients ──────────────────────────────────────────────────────────────────
 const groq = new Groq({ apiKey: process.env.GROQ_API_KEY });
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+console.log("Groq key exists:", !!process.env.GROQ_API_KEY);
+console.log("Groq key preview:", process.env.GROQ_API_KEY?.slice(0, 10));
 
 const SYSTEM =
   "You are a shopping assistant. Give a ranked numbered list of top 5-7 specific brands with brief reasons. Format strictly: 1. Brand Name - reason. 2. Brand Name - reason.";
