@@ -164,7 +164,7 @@ aeo-diagnostic/
 |-----|-----------|------------|
 | Groq (Llama 3.3) | Unlimited (generous) | 30 req/min |
 | Google Gemini 1.5 Flash | 1M tokens/day | 15 req/min |
-| Anthropic Claude Haiku | Free $5 credits new users | Very cheap |
+|Cloudflare | Free  | Very cheap |
 
 Total cost to run this for the demo: **~$0.002 per analysis** (just the Anthropic portion)
 
