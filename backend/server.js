@@ -1,6 +1,5 @@
 require("dotenv").config();
 const express = require("express");
-const cors = require("cors");
 const fetch = require("node-fetch");
 const Groq = require("groq-sdk").default;
 const { GoogleGenerativeAI } = require("@google/generative-ai");
