@@ -21,8 +21,36 @@ app.use(express.json());
 // ─── Clients ──────────────────────────────────────────────────────────────────
 const groq = new Groq({ apiKey: process.env.GROQ_API_KEY });
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
-console.log("Groq key exists:", !!process.env.GROQ_API_KEY);
-console.log("Groq key preview:", process.env.GROQ_API_KEY?.slice(0, 10));
+console.log("Groq:", !!process.env.GROQ_API_KEY);
+console.log("Gemini:", !!process.env.GEMINI_API_KEY);
+console.log("CF:", !!process.env.CF_API_TOKEN);
+console.log(JSON.stringify(process.env.GROQ_API_KEY));
+
+app.get("/gemini-test", async (req, res) => {
+  try {
+    const completion = await groq.chat.completions.create({
+      model: "Llama 3.1 8B",
+      messages: [
+        {
+          role: "user",
+          content: "Hello",
+        },
+      ],
+    });
+
+    res.json({
+      success: true,
+      text: completion.choices[0].message.content,
+    });
+  } catch (err) {
+    console.error(err);
+
+    res.status(500).json({
+      error: err.message,
+      full: err,
+    });
+  }
+});
 
 const SYSTEM =
   "You are a shopping assistant. Give a ranked numbered list of top 5-7 specific brands with brief reasons. Format strictly: 1. Brand Name - reason. 2. Brand Name - reason.";
@@ -90,7 +118,7 @@ async function queryDeepSeek(prompt) {
   const start = Date.now();
   try {
     const res = await groq.chat.completions.create({
-      model: "deepseek-r1-distill-llama-70b",
+      model: "llama-3.1-8b-instant",
       messages: [
         { role: "system", content: SYSTEM },
         { role: "user", content: prompt },
@@ -329,9 +357,8 @@ app.post("/api/analyze", async (req, res) => {
 
   // All 6 models in parallel
   const [r1, r4, r5] = await Promise.all([
-    queryDeepSeek(query),
     queryLlama(query),
-
+    queryDeepSeek(query),
     queryCloudflare(query),
   ]);
 
