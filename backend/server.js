@@ -4,9 +4,9 @@ const cors = require("cors");
 const fetch = require("node-fetch");
 const Groq = require("groq-sdk").default;
 const { GoogleGenerativeAI } = require("@google/generative-ai");
-
 const app = express();
 const PORT = process.env.PORT || 5000;
+const cors = require("cors");
 
 app.use(
   cors({
@@ -25,32 +25,6 @@ console.log("Groq:", !!process.env.GROQ_API_KEY);
 console.log("Gemini:", !!process.env.GEMINI_API_KEY);
 console.log("CF:", !!process.env.CF_API_TOKEN);
 console.log(JSON.stringify(process.env.GROQ_API_KEY));
-
-app.get("/gemini-test", async (req, res) => {
-  try {
-    const completion = await groq.chat.completions.create({
-      model: "Llama 3.1 8B",
-      messages: [
-        {
-          role: "user",
-          content: "Hello",
-        },
-      ],
-    });
-
-    res.json({
-      success: true,
-      text: completion.choices[0].message.content,
-    });
-  } catch (err) {
-    console.error(err);
-
-    res.status(500).json({
-      error: err.message,
-      full: err,
-    });
-  }
-});
 
 const SYSTEM =
   "You are a shopping assistant. Give a ranked numbered list of top 5-7 specific brands with brief reasons. Format strictly: 1. Brand Name - reason. 2. Brand Name - reason.";
