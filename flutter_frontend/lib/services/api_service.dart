@@ -8,8 +8,8 @@ class ApiService {
   // Local: http://localhost:5000
   // Android emulator: http://10.0.2.2:5000
   // Production: https://your-app.onrender.com
-  // static const String baseUrl = 'https://ai-brand-analyzer.onrender.com';
-  static const String baseUrl = 'http://localhost:5000';
+  static const String baseUrl = 'https://ai-brand-analyzer.onrender.com';
+  // static const String baseUrl = 'http://localhost:5000';
 
   static Future<AnalysisResult> analyze({required String query, required String brand}) async {
     final response = await http
