@@ -325,13 +325,8 @@ app.post("/api/analyze", async (req, res) => {
   if (!query || !userBrand)
     return res.status(400).json({ error: "query and userBrand are required" });
 
-<<<<<<< HEAD
   // All 6 models in parallel
   const [r1, r4, r5] = await Promise.all([
-=======
-  // All 3models in parallel
-  const [r1,r4, r5] = await Promise.all([
->>>>>>> 5a9c4c4e11eed2a126faf910b336ec505668cfa7
     queryDeepSeek(query),
     queryLlama(query),
 
@@ -431,14 +426,9 @@ app.post("/api/analyze", async (req, res) => {
   });
 });
 
-<<<<<<< HEAD
 app.get("/health", (_, res) =>
   res.json({ status: "ok", timestamp: new Date().toISOString() }),
 );
 app.listen(PORT, () =>
   console.log(`✅ AEO Diagnostic running on port ${PORT} — 3 AI models`),
 );
-=======
-app.get("/health", (_, res) => res.json({ status:"ok", timestamp:new Date().toISOString() }));
-app.listen(PORT, () => console.log(`✅ AEO Diagnostic running on port ${PORT} — 3AI models`));
->>>>>>> 5a9c4c4e11eed2a126faf910b336ec505668cfa7
