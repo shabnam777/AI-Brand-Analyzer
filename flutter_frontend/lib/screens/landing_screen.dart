@@ -65,9 +65,9 @@ class _LandingScreenState extends State<LandingScreen> with SingleTickerProvider
 
   // 4 models matching React exactly
   final _models = [
-    (Icons.memory_rounded, '🟢', 'DeepSeek R1 70B', 'Groq', Color(0xFF059669)),
-    (Icons.memory_outlined, '🟠', 'Llama 3.3 70B', 'Groq', Color(0xFFFF6B35)),
-    (Icons.cloud_rounded, '🟡', 'Llama 3.1 8B', 'Cloudflare AI', Color(0xFFF59E0B)),
+    (Icons.memory_rounded, '🟢', 'DeepSeek R1 70B', 'Groq', const Color(0xFF059669)),
+    (Icons.memory_outlined, '🟠', 'Llama 3.3 70B', 'Groq', const Color(0xFFFF6B35)),
+    (Icons.cloud_rounded, '🟡', 'Llama 3.1 8B', 'Cloudflare AI', const Color(0xFFF59E0B)),
   ];
 
   final _steps = [
@@ -203,9 +203,9 @@ class _LandingScreenState extends State<LandingScreen> with SingleTickerProvider
             TextField(
               controller: _queryCtrl,
               style: AppText.body(14),
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                   hintText: 'e.g. best magnesium supplement for seniors',
-                  prefixIcon: const Icon(Icons.search_rounded, color: AppColors.textMuted, size: 20),
+                  prefixIcon: Icon(Icons.search_rounded, color: AppColors.textMuted, size: 20),
                   filled: true,
                   fillColor: AppColors.bg),
             ),
@@ -215,9 +215,9 @@ class _LandingScreenState extends State<LandingScreen> with SingleTickerProvider
             TextField(
               controller: _brandCtrl,
               style: AppText.body(14),
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                   hintText: 'e.g. Nature Made, Anker',
-                  prefixIcon: const Icon(Icons.storefront_rounded, color: AppColors.textMuted, size: 20),
+                  prefixIcon: Icon(Icons.storefront_rounded, color: AppColors.textMuted, size: 20),
                   filled: true,
                   fillColor: AppColors.bg),
               onSubmitted: (_) => _analyze(),
@@ -366,3 +366,5 @@ class _LandingScreenState extends State<LandingScreen> with SingleTickerProvider
         ]),
       );
 }
+ 
+ // check new yml
