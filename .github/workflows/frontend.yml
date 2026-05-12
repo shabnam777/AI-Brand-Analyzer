@@ -1,19 +1,12 @@
-name: Flutter Frontend Deploy
+name: Deploy Flutter Frontend to Vercel
 
 on:
   push:
     paths:
       - "flutter_frontend/**"
 
-permissions:
-  contents: write
-
-concurrency:
-  group: frontend-deploy
-  cancel-in-progress: true
-
 jobs:
-  build-and-deploy:
+  deploy:
     runs-on: ubuntu-latest
 
     defaults:
@@ -29,26 +22,19 @@ jobs:
         with:
           channel: stable
 
-      - name: Enable Flutter Web
+      - name: Enable Web Support
         run: flutter config --enable-web
 
       - name: Install Dependencies
         run: flutter pub get
 
       - name: Build Flutter Web
-        run: flutter build web --release --base-href "/AI-Brand-Analyzer/"
-
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: flutter_frontend/build/web
-          force_orphan: true
+        run: flutter build web --release
 
       - name: Install Vercel CLI
         run: npm install -g vercel
 
       - name: Deploy to Vercel
         run: |
-          cd flutter_frontend/build/web
+          cd build/web
           vercel --prod --yes --token=${{ secrets.VERCEL_TOKEN }}
