@@ -1,4 +1,4 @@
-name: Flutter Frontend Deploy
+name: Deploy Flutter Frontend
 
 on:
   push:
@@ -8,12 +8,8 @@ on:
 permissions:
   contents: write
 
-concurrency:
-  group: frontend-deploy
-  cancel-in-progress: true
-
 jobs:
-  build-and-deploy:
+  deploy:
     runs-on: ubuntu-latest
 
     defaults:
@@ -21,23 +17,41 @@ jobs:
         working-directory: flutter_frontend
 
     steps:
+      # -------------------------
+      # Checkout Repo
+      # -------------------------
       - name: Checkout Repository
         uses: actions/checkout@v4
 
+      # -------------------------
+      # Setup Flutter
+      # -------------------------
       - name: Setup Flutter
         uses: subosito/flutter-action@v2
         with:
           channel: stable
 
+      # -------------------------
+      # Enable Web
+      # -------------------------
       - name: Enable Flutter Web
         run: flutter config --enable-web
 
+      # -------------------------
+      # Install Dependencies
+      # -------------------------
       - name: Install Dependencies
         run: flutter pub get
 
+      # -------------------------
+      # Build Flutter Web
+      # -------------------------
       - name: Build Flutter Web
         run: flutter build web --release --base-href "/AI-Brand-Analyzer/"
 
+      # -------------------------
+      # Deploy GitHub Pages
+      # -------------------------
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
@@ -45,10 +59,36 @@ jobs:
           publish_dir: flutter_frontend/build/web
           force_orphan: true
 
+      # -------------------------
+      # Install Vercel CLI
+      # -------------------------
       - name: Install Vercel CLI
         run: npm install -g vercel
 
+      # -------------------------
+      # Pull Vercel Project Settings
+      # -------------------------
+      - name: Pull Vercel Environment
+        run: |
+          vercel pull --yes \
+          --environment=production \
+          --token=${{ secrets.VERCEL_TOKEN }}
+
+      # -------------------------
+      # Build Vercel Project
+      # -------------------------
+      - name: Build Vercel Project
+        run: |
+          vercel build \
+          --prod \
+          --token=${{ secrets.VERCEL_TOKEN }}
+
+      # -------------------------
+      # Deploy to Vercel
+      # -------------------------
       - name: Deploy to Vercel
         run: |
-          cd flutter_frontend/build/web
-          vercel --prod --yes --token=${{ secrets.VERCEL_TOKEN }}
+          vercel deploy \
+          --prebuilt \
+          --prod \
+          --token=${{ secrets.VERCEL_TOKEN }}
