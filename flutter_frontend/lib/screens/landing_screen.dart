@@ -21,35 +21,15 @@ class _LandingScreenState extends State<LandingScreen> with SingleTickerProvider
     ('best fish oil supplement', 'Nordic Naturals'),
     ('best budget bluetooth speaker', 'JBL'),
     ('best sunscreen for oily skin', 'Neutrogena'),
-
     ('best vitamin d3 supplement', 'NOW Foods'),
     ('best calcium tablets for women', 'Citracal'),
-
     ('best probiotics for gut health', 'Culturelle'),
-
-    ('best shampoo for hair fall', 'WOW Skin Science'),
-    ('best sunscreen for oily skin', 'Neutrogena'),
-    ('best face wash for acne', 'Cetaphil'),
-    ('best anti aging cream', 'Olay'),
-    ('best moisturizer for dry skin', 'Nivea'),
-
-    ('best laptop under 1000', 'Dell'),
-    ('best ultrabook for developers', 'Apple'),
-    ('best android phone under 500', 'Samsung'),
-    ('best budget tablet', 'Lenovo'),
-    ('best monitor for coding', 'LG'),
 
     ('best running shoes', 'Nike'),
     ('best gym shoes for men', 'Adidas'),
     ('best yoga mat', 'Liforme'),
     ('best protein bars', 'Quest'),
     ('best creatine monohydrate', 'Optimum Nutrition'),
-
-    ('best coffee beans', 'Lavazza'),
-    ('best green tea brand', 'Twinings'),
-    ('best peanut butter', 'Pintola'),
-    ('best olive oil', 'Figaro'),
-    ('best dark chocolate', 'Lindt'),
 
     ('best office chair for back pain', 'Green Soul'),
     ('best ergonomic keyboard', 'Microsoft'),
