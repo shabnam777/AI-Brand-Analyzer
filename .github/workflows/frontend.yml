@@ -1,95 +1,56 @@
-# name: Flutter Frontend Deploy
-
-# on:
-#   push:
-#     branches:
-#       - main
-#     paths:
-#       - "flutter_frontend/**"
-
-# permissions:
-#   contents: write
-
-# concurrency:
-#   group: frontend-deploy
-#   cancel-in-progress: true
-
-# jobs:
-#   build-and-deploy:
-#     runs-on: ubuntu-latest
-
-#     defaults:
-#       run:
-#         working-directory: flutter_frontend
-
-#     steps:
-#       - name: Checkout Repository
-#         uses: actions/checkout@v4
-
-#       # -------------------------
-#       # Setup Flutter
-#       # -------------------------
-#       - name: Setup Flutter
-#         uses: subosito/flutter-action@v2
-#         with:
-#           channel: stable
-
-#       - name: Enable Flutter Web
-#         run: flutter config --enable-web
-
-#       - name: Install Dependencies
-#         run: flutter pub get
-
-#       # -------------------------
-#       # Build Flutter Web
-#       # -------------------------
-#       - name: Build Flutter Web
-#         run: flutter build web --release --base-href "/AI-Brand-Analyzer/"
-
-#       # -------------------------
-#       # GitHub Pages Deploy
-#       # -------------------------
-#       - name: Deploy to GitHub Pages
-#         uses: peaceiris/actions-gh-pages@v3
-#         with:
-#           github_token: ${{ secrets.GITHUB_TOKEN }}
-#           publish_dir: flutter_frontend/build/web
-#           force_orphan: true
-
-#       # -------------------------
-#       # Install Vercel CLI
-#       # -------------------------
-#       - name: Install Vercel CLI
-#         run: npm install -g vercel
-
-#       # -------------------------
-#       # Pull Vercel Environment
-#       # -------------------------
-#       - name: Pull Vercel Environment
-#         run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
-
-#       # -------------------------
-#       # Build Vercel Project
-#       # -------------------------
-#       - name: Build Vercel Projectm
-#         run: vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
-
-#       # -------------------------
-#       # Deploy to Vercel
-#       # -------------------------
-#       - name: Deploy to Vercel
-#         run: vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }}
-
-name: Test Frontend Trigger
+name: Flutter Frontend Deploy
 
 on:
   push:
+    branches:
+      - main
     paths:
       - "flutter_frontend/**"
 
+permissions:
+  contents: write
+
+concurrency:
+  group: frontend-deploy
+  cancel-in-progress: true
+
 jobs:
-  test:
+  build-and-deploy:
     runs-on: ubuntu-latest
 
+    defaults:
+      run:
+        working-directory: flutter_frontend
+
     steps:
-      - run: echo "Frontend workflow triggered"
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+
+      - name: Enable Flutter Web
+        run: flutter config --enable-web
+
+      - name: Install Dependencies
+        run: flutter pub get
+
+      - name: Build Flutter Web
+        run: flutter build web --release --base-href "/AI-Brand-Analyzer/"
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: flutter_frontend/build/web
+          force_orphan: true
+
+      - name: Install Vercel CLI
+        run: npm install -g vercel
+
+      - name: Deploy to Vercel
+        run: |
+          cd flutter_frontend/build/web
+          vercel --prod --yes --token=${{ secrets.VERCEL_TOKEN }}
